@@ -31,12 +31,12 @@ body {
   content: "";
   position: relative;
   top: 48.9%;
-  left: 1.2%;
+  left: 0.85%;
   width: 12px;
   height: 12px;
   background: #353636;
   border-radius: 50%;
-  z-index: 1000;
+  z-index: 20;
   box-shadow: 0 0 0 4px #fff, 0 0 0 6px #fff;
 }
 
