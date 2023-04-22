@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./style.css" />
+  <title>Oooops Clock Hands</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .mod-p {
+      color: #ccc;
+    }
+    .mod-p > a {
+      color: #7e7eed;
+    }
+  </style>
+</head>
+<!-- 
+                                  ....                              .J""9Q.JJ,
+                       .J""W,    .F  TTh                           .#     !  ?b
+                    .d""    N.   .@    W.                          ,b         #
+                    ()       ?]   YAM+""    .....J+gggJ...        .M'   .    -N,
+                    .N,   /a.d^      ! ..gM""7!         .7YN,     ,N, .#       M 
+                    ,F    YgJN,     .d"^                   .M&&g+J..vMD..H3   d%                                                                                                                    
+                     (4,..#'  (.&+dD                               .MNMN#N...JD               ..gMMMMMMMNJ,
+                           .-@^                                    .!  .M]                ..MMMMY"!        TN,                                                         .MMMMMMM\
+                         .d"          .Jg+.,    ..MMMMMN,               (#              .dMMMD!  ..          WN,                                                      JMMMMMMM^
+                        (D         .JMMMMMMMN. .MMBMMMMMM|             .d^            .dMMM"   .MMMM^         MM[                                                    JMMMMMMH!
+                      .#!         .MMD-MMMMMM].MM^dMMMMMM\            .#'            .MMMF   .MMMB'           (MM.                                                  JMMMMMM#
+                     .F           MMF dMMMMMMgMMt dMMMMMM([           "Mp           .MMMt  .JMMM^             .MM]                                                 -MMMMMM#,         ....
+                    .#           .MM! .TMMMMMMM#   TMMMMMM^            ,#           dMMF  .MMMD               (MM]                                                .MMMMMM#""Mm,  ..MMMMY"Wm.          
+                    ,F          .,MN    .MM@"(M@   .JMM"_..            dt          .MM#  .MMMD                MMM\  .(MMMMMMNJ,      ..-+J,.          .....       MMMMMMD   dMN.dMM#"     "!
+                     WJ.      ....7Mc..dMM%   TN..+MM@_.....          J$           .MM@ .MMMF                .MM# .dMMMWMMMMMMMb   .MMMMMMMMMN,    .MMMMMMMMNa.  -MMMMM$    dMM?MM#
+                       79Q,   . . ..?T""'       _""!    ..          .#!             HM# dMMF                .MMM%.MMMF.MMMMMMMMM..MMM@jMMMMMMMM[ .MMM@dMMMt dMN..MMMMMF    .MM#  (WN,
+                        .@                                       .(Ma,              .WMgMM#   .            .MMMF MMMD .MMMMMMMM#.MMMD dMMMMMMMM].MMMt MMM^  dMM}(MMMMF   .dMMM'    (MN,
+                        M                                       _    dF               .MMMh..dMM[         .dMMF .MM#   /MMMMMMMMMMMF  ?MMMMMMMMaMMM%  MM#  .MMM.MMMMF  .+MMMD       ,MMx
+                        N                                        ...d"                 dMM7"""""         .MMMF  .MMF     .MMMMMMMMM    .YMMMMMMMMM#    TM,.MMMMMMMMN.gMMM#"        .MMMF
+                        (N,                        .......(ggMM"""                     JMM_            .JMMM%    TMb   ..MMMB!  XMN     .dMMM""!MMb     .dMMM""MMMM 7""!        .(MMMM"
+                          .7""BWW""N....J"""""""""#7?!                                 .MM]          .+MMMD        THMMMM#"      7Mp..JMMMM"    .WN,...MMMM"   MMM'        ..(MMMMB=
+                                     _4]          N                                      TM,      ..MMMM"                           7"""=          ?"WH""!    .MM$  ...(gMMMMY"!
+                                      ,b..Jg,    .N, .... ...                              ?9NNMMMMMY"                                                      ..-MNMMMMM"""!
+                                       (MNkbMN     jMNkkMMMHMMN.                                                                                   ....JgMMMMMMM"!
+                                      .NbbbkNMMMQ, dNkkkkMbbbbMF                                J.,                                     ....(ggMMMMMH"""7     M$
+                                .JMMMMMMNHNHMkkkHN qNHkHHbbbkHM^                                 7"MN&(......................(JgggNMMMMMM"""TN, .Mb           "
+                               .MkbbbkbbbbkbkkbkN#  ,MMMbbbkM@                                           ??7"""""""""""""""77?!        .Ta.   Th.dM{        .MMa.
+                                HHkkbbkbbkNMMNNM" .JMMMMbbkHN                                                                             ?4(..(MM#        (MMMMF                                    
+                                 ?WNNNNNMB^      -MkkbbbbkbHM                                                                                              ,MMM@
+                                                 dNbbbkbbkHM3                                
+                                                 .YNNNNNM#"                                      
+ -->
+<body onload="changeCSS()">
+  <div class="clock">
+    <div class="circle" id="hr"><i></i></div>
+    <div class="circle" id="mn"><i></i></div>
+    <div class="circle" id="sc"><i></i></div>
+  </div>
+  <div class="hidden-content">
+    <div>
+      <label><input type="color" id="colorBox1" />色1（秒針）</label>
+      <label><input type="color" id="colorBox2" />色2（短針・長針）</label>
+    </div>
+
+    <button
+      class="shadow-lg bg-fuchsia-500 shadow-fuchsia-500/50 text-white rounded px-2 py-1"
+    >
+      <input type="button" value="Change" id="checkButton" />
+    </button>
+    <!-- <button
+      class="shadow-lg bg-fuchsia-500 shadow-fuchsia-500/50 text-white rounded px-2 py-1"
+      onclick="showHideUrl()"
+    >
+      For OBS URL
+    </button> -->
+    <dialog>
+      <p>下記のURLをOBSのブラウザソースに入れてください</p>
+
+      <input type="text" id="sourceUrl" value="" />
+
+      <div>
+        <button
+          class="shadow-lg bg-red-500 shadow-red-500/50 text-white rounded px-2 py-1"
+          id="close"
+        >
+          Close
+        </button>
+      </div>
+    </dialog>
+    <button
+      class="shadow-lg bg-indigo-500 shadow-indigo-500/50 text-white rounded px-2 py-1"
+      id="show"
+    >
+      For OBS Source
+    </button>
+
+    <script>
+      var dialog = document.querySelector("dialog");
+      var btn_show = document.getElementById("show");
+      var btn_close = document.getElementById("close");
+      btn_show.addEventListener(
+        "click",
+        function () {
+          var input = document.getElementById("sourceUrl");
+          input.value = window.location.href + "&hide=true";
+          dialog.showModal();
+        },
+        false
+      );
+      btn_close.addEventListener(
+        "click",
+        function () {
+          dialog.close();
+        },
+        false
+      );
+    </script>
+  </div>
+  <script>
+    let hr = document.querySelector("#hr");
+    let mn = document.querySelector("#mn");
+    let sc = document.querySelector("#sc");
+
+    setInterval(() => {
+      let day = new Date();
+      let hh = day.getHours() * (360 / 12);
+      let mm = day.getMinutes() * (360 / 60);
+      let ss = day.getSeconds() * (360 / 60);
+
+      hr.style.transform = `rotateZ(${hh + mm / 12}deg)`;
+      mn.style.transform = `rotateZ(${mm}deg)`;
+      sc.style.transform = `rotateZ(${ss}deg)`;
+    });
+  </script>
+</body>
+<script src="js/changeColor.js"></script>
+<script src="js/getColor.js"></script>
+<!-- <script src="js/dialog.js"></script> -->
+<script src="js/hidden.js"></script>

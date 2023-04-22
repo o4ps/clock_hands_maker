@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #fff1e5;
+}
+
+.hidden {
+  display: none;
+}
+
+.clock {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  /* background: #c9d5e0; */
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+/* clock hands pin */
+.clock::before {
+  content: "";
+  position: relative;
+  top: 48.9%;
+  left: 1.2%;
+  width: 12px;
+  height: 12px;
+  background: #353636;
+  border-radius: 50%;
+  z-index: 1000;
+  box-shadow: 0 0 0 4px #fff, 0 0 0 6px #fff;
+}
+
+/* clock hands */
+.circle {
+  position: relative;
+  inset: 0;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+}
+.clock .circle i {
+  position: absolute;
+  /* width: 6px; */
+  height: 50%;
+  background: rgb(71, 71, 71);
+  transform-origin: bottom;
+  transform: scaleY(0.65);
+}
+.clock .circle#hr i {
+  position: absolute;
+  transform: scaleY(0.5);
+  width: 12px;
+  box-shadow: 0 70px 0 rgb(71, 71, 71);
+}
+.clock .circle#mn i {
+  width: 9px;
+  transform: scaleY(0.65);
+  box-shadow: 0 70px 0 rgb(71, 71, 71);
+}
+.clock .circle#sc i {
+  width: 6px;
+  position: absolute;
+  transform: scaleY(0.8);
+  background: #ffffff;
+  z-index: 20;
+  box-shadow: 0 70px 0 #ffffff;
+}
+
+dialog {
+  width: auto;
+}
+
+#sourceUrl {
+  width: 90%;
+  margin: 0 5px;
+}
