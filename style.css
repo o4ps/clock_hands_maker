@@ -76,12 +76,3 @@ body {
   z-index: 20;
   box-shadow: 0 70px 0 #ffffff;
 }
-
-dialog {
-  width: auto;
-}
-
-#sourceUrl {
-  width: 90%;
-  margin: 0 5px;
-}
