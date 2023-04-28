@@ -34,10 +34,10 @@ body {
   left: 0.85%;
   width: 12px;
   height: 12px;
-  background: #353636;
+  background: #ffbdd1;
   border-radius: 50%;
   z-index: 20;
-  box-shadow: 0 0 0 4px #fff, 0 0 0 6px #fff;
+  box-shadow: 0 0 0 4px #ff6161, 0 0 0 6px #ff6161;
 }
 
 /* clock hands */
@@ -53,7 +53,7 @@ body {
   position: absolute;
   /* width: 6px; */
   height: 50%;
-  background: rgb(71, 71, 71);
+  background: #ffbdd1;
   transform-origin: bottom;
   transform: scaleY(0.65);
 }
@@ -61,18 +61,18 @@ body {
   position: absolute;
   transform: scaleY(0.5);
   width: 12px;
-  box-shadow: 0 70px 0 rgb(71, 71, 71);
+  box-shadow: 0 70px 0 #ffbdd1;
 }
 .clock .circle#mn i {
   width: 9px;
   transform: scaleY(0.65);
-  box-shadow: 0 70px 0 rgb(71, 71, 71);
+  box-shadow: 0 70px 0 #ffbdd1;
 }
 .clock .circle#sc i {
   width: 6px;
   position: absolute;
   transform: scaleY(0.8);
-  background: #ffffff;
+  background: #ff6161;
   z-index: 20;
-  box-shadow: 0 70px 0 #ffffff;
+  box-shadow: 0 70px 0 #ff6161;
 }
