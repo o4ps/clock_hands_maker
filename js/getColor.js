@@ -9,13 +9,8 @@ function getColorByParam(name, url) {
 }
 
 function isValidColor(color) {
-  if (!color || color.length === 0) {
-    return false;
-  }
-
-  var colorTestElement = document.createElement("div");
-  colorTestElement.style.color = color;
-  return colorTestElement.style.color.length > 0;
+  const regex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
+  return regex.test(color);
 }
 
 function changeCSS() {
@@ -42,6 +37,8 @@ function changeCSS() {
         "; }",
       0
     );
+    let colorBox1 = document.getElementById("colorBox1");
+    colorBox1.value = firstColorParam;
   }
 
   if (isValidColor(secondColorParam)) {
@@ -61,10 +58,7 @@ function changeCSS() {
       ".clock::before { background:" + secondColorParam + "; }",
       0
     );
+    let colorBox2 = document.getElementById("colorBox2");
+    colorBox2.value = secondColorParam;
   }
-
-  let colorBox1 = document.getElementById("colorBox1");
-  colorBox1.value = firstColorParam;
-  let colorBox2 = document.getElementById("colorBox2");
-  colorBox2.value = secondColorParam;
 }
