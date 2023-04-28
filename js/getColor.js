@@ -27,10 +27,6 @@ function changeCSS() {
   document.head.appendChild(element);
   var sheet = element.sheet;
 
-  console.log(firstColorParam);
-  console.log(secondColorParam);
-  console.log(!isValidColor(firstColorParam));
-  console.log(!isValidColor(secondColorParam));
   if (
     !hasNoParameters &&
     (!isValidColor(firstColorParam) || !isValidColor(secondColorParam))
