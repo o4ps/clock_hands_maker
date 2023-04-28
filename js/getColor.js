@@ -13,6 +13,13 @@ function isValidColor(color) {
   return regex.test(color);
 }
 
+function hasNoParameters() {
+  const url = new URL(window.location.href);
+  const searchParams = url.searchParams;
+
+  return searchParams.toString() === "";
+}
+
 function changeCSS() {
   var firstColorParam = getColorByParam("firstColor");
   var secondColorParam = getColorByParam("secondColor");
@@ -24,7 +31,10 @@ function changeCSS() {
   console.log(secondColorParam);
   console.log(!isValidColor(firstColorParam));
   console.log(!isValidColor(secondColorParam));
-  if (!isValidColor(firstColorParam) || !isValidColor(secondColorParam)) {
+  if (
+    !hasNoParameters &&
+    (!isValidColor(firstColorParam) || !isValidColor(secondColorParam))
+  ) {
     errMsgBuff = [
       "不正なカラーコードが指定されました\n\n",
       "色1: " + getColorByParam("firstColor") + "\n",
