@@ -62,4 +62,9 @@ function changeCSS() {
       0
     );
   }
+
+  let colorBox1 = document.getElementById("colorBox1");
+  colorBox1.value = firstColorParam;
+  let colorBox2 = document.getElementById("colorBox2");
+  colorBox2.value = secondColorParam;
 }
