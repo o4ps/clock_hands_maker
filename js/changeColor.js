@@ -18,9 +18,7 @@ function changeColor() {
 }
 
 let colorBox1 = document.getElementById("colorBox1");
-// colorBox1.value = "#F0F0F0";
 let colorBox2 = document.getElementById("colorBox2");
-// colorBox2.value = "#F0F0F0";
 
 let checkButton = document.getElementById("checkButton");
 checkButton.addEventListener("click", changeColor);
