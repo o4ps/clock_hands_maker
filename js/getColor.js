@@ -20,45 +20,57 @@ function changeCSS() {
   document.head.appendChild(element);
   var sheet = element.sheet;
 
-  if (isValidColor(firstColorParam)) {
-    sheet.insertRule(
-      ".clock .circle#sc i { background: " + firstColorParam + "; }",
-      0
-    );
-    sheet.insertRule(
-      ".clock .circle#sc i { box-shadow: 0 70px 0 " + firstColorParam + "; }",
-      0
-    );
-    sheet.insertRule(
-      ".clock::before { box-shadow: 0 0 0 4px " +
-        firstColorParam +
-        ", 0 0 0 6px " +
-        firstColorParam +
-        "; }",
-      0
-    );
-    let colorBox1 = document.getElementById("colorBox1");
-    colorBox1.value = firstColorParam;
+  console.log(firstColorParam);
+  console.log(secondColorParam);
+  console.log(!isValidColor(firstColorParam));
+  console.log(!isValidColor(secondColorParam));
+  if (!isValidColor(firstColorParam) || !isValidColor(secondColorParam)) {
+    errMsgBuff = [
+      "不正なカラーコードが指定されました\n\n",
+      "色1: " + getColorByParam("firstColor") + "\n",
+      "色2: " + getColorByParam("secondColor") + "\n",
+    ];
+    errMsg = errMsgBuff.join("");
+    window.alert(errMsg);
+
+    return;
   }
 
-  if (isValidColor(secondColorParam)) {
-    sheet.insertRule(
-      ".clock .circle#hr i { box-shadow: 0 70px 0 " + secondColorParam + "; }",
-      0
-    );
-    sheet.insertRule(
-      ".clock .circle#mn i { box-shadow: 0 70px 0 " + secondColorParam + "; }",
-      0
-    );
-    sheet.insertRule(
-      ".clock .circle i { background:" + secondColorParam + "; }",
-      0
-    );
-    sheet.insertRule(
-      ".clock::before { background:" + secondColorParam + "; }",
-      0
-    );
-    let colorBox2 = document.getElementById("colorBox2");
-    colorBox2.value = secondColorParam;
-  }
+  sheet.insertRule(
+    ".clock .circle#sc i { background: " + firstColorParam + "; }",
+    0
+  );
+  sheet.insertRule(
+    ".clock .circle#sc i { box-shadow: 0 70px 0 " + firstColorParam + "; }",
+    0
+  );
+  sheet.insertRule(
+    ".clock::before { box-shadow: 0 0 0 4px " +
+      firstColorParam +
+      ", 0 0 0 6px " +
+      firstColorParam +
+      "; }",
+    0
+  );
+  let colorBox1 = document.getElementById("colorBox1");
+  colorBox1.value = firstColorParam;
+
+  sheet.insertRule(
+    ".clock .circle#hr i { box-shadow: 0 70px 0 " + secondColorParam + "; }",
+    0
+  );
+  sheet.insertRule(
+    ".clock .circle#mn i { box-shadow: 0 70px 0 " + secondColorParam + "; }",
+    0
+  );
+  sheet.insertRule(
+    ".clock .circle i { background:" + secondColorParam + "; }",
+    0
+  );
+  sheet.insertRule(
+    ".clock::before { background:" + secondColorParam + "; }",
+    0
+  );
+  let colorBox2 = document.getElementById("colorBox2");
+  colorBox2.value = secondColorParam;
 }
