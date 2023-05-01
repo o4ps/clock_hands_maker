@@ -13,11 +13,13 @@ function isValidColor(color) {
   return regex.test(color);
 }
 
-function hasNoParameters() {
+function hasNoColorParameters() {
   const url = new URL(window.location.href);
   const searchParams = url.searchParams;
 
-  return searchParams.toString() === "";
+  return (
+    searchParams.toString() === "" || searchParams.toString() === "hide=true"
+  );
 }
 
 function changeCSS() {
@@ -28,18 +30,33 @@ function changeCSS() {
   var sheet = element.sheet;
 
   if (
-    !hasNoParameters &&
+    !hasNoColorParameters() &&
     (!isValidColor(firstColorParam) || !isValidColor(secondColorParam))
   ) {
     errMsgBuff = [
       "不正なカラーコードが指定されました\n\n",
-      "色1: " + getColorByParam("firstColor") + "\n",
-      "色2: " + getColorByParam("secondColor") + "\n",
+      // "色1: " + getColorByParam("firstColor") + "\n",
+      // "色2: " + getColorByParam("secondColor") + "\n",
     ];
+
+    if (!isValidColor(firstColorParam)) {
+      errMsgBuff.push("色1: " + getColorByParam("firstColor") + "\n");
+    }
+    if (!isValidColor(secondColorParam)) {
+      errMsgBuff.push("色2: " + getColorByParam("secondColor") + "\n");
+    }
+
     errMsg = errMsgBuff.join("");
     window.alert(errMsg);
+  }
 
-    return;
+  if (
+    hasNoColorParameters() ||
+    !isValidColor(firstColorParam) ||
+    !isValidColor(secondColorParam)
+  ) {
+    firstColorParam = "#ff6161";
+    secondColorParam = "#ffbdd1";
   }
 
   sheet.insertRule(
