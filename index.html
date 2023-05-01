@@ -164,7 +164,14 @@
             .getElementById(modalID + "-backdrop")
             .classList.toggle("flex");
           var input = document.getElementById("sourceUrl");
-          input.value = window.location.href + "&hide=true";
+
+          const url = new URL(window.location.href);
+          const searchParams = url.searchParams;
+          if (searchParams.toString() === "") {
+            input.value = window.location.href + "?hide=true";
+          } else {
+            input.value = window.location.href + "&hide=true";
+          }
         }
       </script>
     </div>
